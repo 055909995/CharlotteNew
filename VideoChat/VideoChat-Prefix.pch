@@ -1,0 +1,15 @@
+//
+//  VideoChat-Prefix.pch
+//  VideoChat
+//
+//  Created by Vardan Sargsyan on 3/14/20.
+//  Copyright © 2020 Vardan. All rights reserved.
+//
+
+#ifndef VideoChat_Prefix_pch
+#define VideoChat_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* VideoChat_Prefix_pch */
