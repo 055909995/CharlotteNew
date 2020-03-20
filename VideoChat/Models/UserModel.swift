@@ -12,15 +12,18 @@ import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
 
 
-struct CurrentUserModel: Codable {
-    let status: Int
-    let userName: String
-    let userID, gender: Int
-    let avatar: String
-    let bDay: String
-    let userStatus, approve, demoCount, demo: Int
-    let message: String
-    let minutes: Int
+
+class UserModel: Codable {
+    let status: Int?
+    let userName: String?
+    let userID: Int
+    let gender: Int? 
+    let avatar: String?
+    let bDay: String?
+    let userStatus, approve, demoCount, demo: Int?
+    let message: String?
+    let minutes: Int?
+    var userImage: UIImageView?
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -34,23 +37,42 @@ struct CurrentUserModel: Codable {
         case demo, message, minutes
     }
     
-    func MD5(string: String) -> Data {
-        let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = string.data(using:.utf8)!
-        var digestData = Data(count: length)
+    
 
-        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-            messageData.withUnsafeBytes { messageBytes -> UInt8 in
-                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
-                    let messageLength = CC_LONG(messageData.count)
-                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
-                }
-                return 0
-            }
-        }
-        return digestData
+    init(status: Int?, userName: String?, userID: Int, gender: Int?, avatar: String?, bDay: String?, userStatus: Int?, approve: Int?, demoCount: Int?, demo: Int?, message: String?, minutes: Int?) {
+        self.status = status
+        self.userName = userName
+        self.userID = userID
+        self.gender = gender
+        self.avatar = avatar
+        self.bDay = bDay
+        self.userStatus = userStatus
+        self.approve = approve
+        self.demoCount = demoCount
+        self.demo = demo
+        self.message = message
+        self.minutes = minutes
+        //self.userImage!.download(from: URL.init(string: (avatar)!)!)
     }
+    
+    func MD5(string: String) -> Data {
+           let length = Int(CC_MD5_DIGEST_LENGTH)
+           let messageData = string.data(using:.utf8)!
+           var digestData = Data(count: length)
+
+           _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
+               messageData.withUnsafeBytes { messageBytes -> UInt8 in
+                   if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
+                       let messageLength = CC_LONG(messageData.count)
+                       CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
+                   }
+                   return 0
+               }
+           }
+           return digestData
+       }
 }
+
 
 
 
@@ -130,4 +152,7 @@ class UserModel1: NSObject {
         }
         return digestData
     }
+    
 }
+
+

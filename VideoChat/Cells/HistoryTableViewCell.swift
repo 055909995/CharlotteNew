@@ -10,15 +10,20 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var imgFriendView: UIView!
+    @IBOutlet weak var lblFriendsName: UILabel!
+    @IBOutlet weak var imgFriend: UIImageView!
+    @IBOutlet weak var btnAddToFriends: UIButton!
+    
+    
+    
+    
+    func setInfo(_ model: FriendModel) {
+        lblFriendsName.text = model.userName
+        imgFriend.download(from:URL.init(string: model.avatar)!)
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        
     }
 
 }

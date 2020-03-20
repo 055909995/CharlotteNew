@@ -11,6 +11,7 @@ import UIKit
 class AcountTableViewCell: UITableViewCell {
 
     @IBOutlet weak var acountList: UILabel!
+    @IBOutlet weak var lblBalance: UILabel!
     @IBOutlet weak var iconList: UIImageView!
     
     override func awakeFromNib() {

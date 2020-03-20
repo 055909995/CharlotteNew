@@ -41,8 +41,9 @@ class LaunchViewController: UIViewController {
         ARSLineProgressConfiguration.successCircleAnimationDrawDuration = 0.5
      //   ARSLineProgressConfiguration.showSuccessCheckmark = true
         ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             print("Success completion block")
-            let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectGenderViewController") as! SelectGenderViewController
+            let signUpVC = storyboard.instantiateViewController(withIdentifier: "SelectGenderViewController") as! SelectGenderViewController
             self.navigationController?.pushViewController(signUpVC, animated: true)
         })
     }

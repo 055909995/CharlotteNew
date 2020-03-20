@@ -9,5 +9,12 @@
 import UIKit
 
 class GiftsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var imgGift: UIImageView!
+    
+   
     
 }
+
+
+
+

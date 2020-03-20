@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct Message {
+    var text: String
+    var type : MessageType
+}
+
+enum MessageType {
+    case incoming
+    case outgoing
+}

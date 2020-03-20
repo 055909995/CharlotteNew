@@ -12,16 +12,16 @@ class Vigenere {
 
     init(alphabet: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", key: String) {
         self.alphabet = alphabet.uppercased()
-        self.alphabetSize = alphabet.characters.count
+        self.alphabetSize = alphabet.count
         self.key = key.uppercased()
-        self.keySize = key.characters.count
+        self.keySize = key.count
     }
 
     func encrypt(plainText: String) -> String {
         var encryptedText = ""
         var index = 0
 
-        for character in plainText.uppercased().characters {
+        for character in plainText.uppercased() {
             let indexInAlphabet = indexOfAlphabet(forCharacter: character)
 
             if indexInAlphabet == -1 {
@@ -43,7 +43,7 @@ class Vigenere {
         var decryptedText = ""
         var index = 0
 
-        for character in encryptedText.uppercased().characters {
+        for character in encryptedText.uppercased() {
             let indexInAlphabet = indexOfAlphabet(forCharacter: character)
 
             if indexInAlphabet == -1 {
@@ -64,7 +64,7 @@ class Vigenere {
     private func indexOfAlphabet(forCharacter character: Character) -> Int {
         var index = 0
 
-        for chr in alphabet.characters {
+        for chr in alphabet {
             if chr == character {
                 return index
             }

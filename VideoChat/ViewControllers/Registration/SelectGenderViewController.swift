@@ -8,23 +8,48 @@
 
 import UIKit
 
-class SelectGenderViewController: UIViewController {
 
+class SelectGenderViewController: UIViewController, UIGestureRecognizerDelegate {
+
+    @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var btnFemale: UIButton!
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnMale.layer.cornerRadius = btnMale.frame.height/2
+        btnFemale.layer.cornerRadius = btnFemale.frame.height/2
 
-        // Do any additional setup after loading the view.
+
     }
+
     
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func btnMaleTapped(_ sender: Any) {
+        newUser.gender = "2"
+        let birthDayVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectBirthDateViewController") as! SelectBirthDateViewController
+        self.navigationController?.pushViewController(birthDayVC, animated: true)
     }
-    */
+    
+    @IBAction func btnFemaleTapped(_ sender: Any) {
+        newUser.gender = "1"
+        let birthDayVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectBirthDateViewController") as! SelectBirthDateViewController
+        self.navigationController?.pushViewController(birthDayVC, animated: true)
+    }
+    @IBAction func btnTest(_ sender: Any) {
+        
 
+        
+//        if self.bottomSheetController.isTotallyExpanded{
+//            self.bottomSheetController.expand()
+//        }else{
+//            self.bottomSheetController.collapse()
+//        }
+    }
+    
 }
+
+

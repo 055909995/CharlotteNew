@@ -133,8 +133,13 @@ class CallScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @IBAction func cancelOutgoingCallBtn(_ sender: Any) {
-        globalSession?.hangUp(nil)
-        
+        if globalSession != nil {
+            globalSession = nil
+            globalSession?.hangUp(nil)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+            showPresenter = false
+        }
     }
     
     
